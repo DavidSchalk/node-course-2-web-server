@@ -8,6 +8,7 @@ var app = express();
 hbs.registerPartials(__dirname + '/views/partials');
 app.set('view engine','hbs');
 app.use(express.static(__dirname+'/public'));
+app.use(express.static(__dirname + '/views'));
 
 app.use((req,res,next) =>
 {
@@ -47,13 +48,17 @@ app.get('/',(req,res) =>
         pageContent:'Welcome bro'
     });
 });
-
-app.get('/about',(req,res) => {
-    res.render('about.hbs',
-    {
-        pageTitle: 'About Page',
-        pageContent:'Awe ma se kinders'
-    });
+app.get('/assets',(req,res) => {
+    res.render('assets');
+});
+app.get('/projects',(req,res) => {
+    res.render('projects.hbs');
+});
+app.get('/cv',(req,res) => {
+    res.render('cv.hbs');
+});
+app.get('/hire-me',(req,res) => {
+    res.render('hire-me.hbs');
 });
 
 app.get('/bad',(req,res) =>
